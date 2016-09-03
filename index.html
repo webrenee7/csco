@@ -33,6 +33,7 @@
             <div class="content_box clearfix">
                 <div class="l_box">
                     <img src="res/images/pic1.png" />
+                    <input type="button" class="btn magnify_btn" />
                 </div>
                 <div class="r_box">
                     <div class="info_txt1">
@@ -64,28 +65,22 @@
                     </div>
                 </div>
                 <div class="r_box">
-                	<div class="imgs_roll">
-                    	<h2>视频示例</h2>
-                        <div class="img_body">
-                            <ul>
-                                <li id="vouch_photo1" style="display:block">
-                                    <p class="img_box"><img src="res/images/img1.jpg" /></p>
-                                    <p class="p_txt">吴一龙教授学术报告</p>
-                                </li>
-                                <li id="vouch_photo2" style="display:none">
-                                    <p class="img_box"><img src="res/images/pic1.png" /></p>
-                                    <p class="p_txt">吴一龙教授学术报告2</p>
-                                </li>
-                            </ul>
-                        </div>
+                    <h2>视频示例</h2>
+                    <div class="img_box">
+                        <p class="img_body">
+                        	<img src="res/images/img1.jpg" />
+                            <input type="button" class="btn magnify_btn" />
+                        </p>
+                        <p class="p_txt">吴一龙教授学术报告</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="section_three">
-        	<div class="content_box">
+        	<div class="content_box clearfix">
             	<div class="l_box">
                 	<img src="res/images/pic2.png" />
+                    <input type="button" class="btn magnify_btn" />
                 </div>
                 <div class="r_box">
                 	<h1><img src="res/images/tit2.png" /></h1>
@@ -109,64 +104,23 @@
             </div>
         </div>
     </div>
+    <div class="cover_box"></div>
+    <div class="pop_box"></div>
     <script>
-		//经过
+		//点击链接
 		$(".info_txt4 a").hover(function(){
 			$(this).parent().toggleClass("hover"+($(this).parent().index()+1));
 		});
-
-		//轮播
-		var _currentTab = 1;
-		function switchVouch(value){
-			for(var i=1; i<=2; i++) {
-			if(i == value) {
-				$("#photo_order" + i).addClass("current");
-				$("#vouch_photo" + i).fadeIn("slow");
-				} else {
-				$("#photo_order" + i).removeClass("current");
-				$("#vouch_photo" + i).fadeOut("slow");
-				}
-			}
-		}
-		function auto() {
-			_currentTab++;
-			if(_currentTab > 2) _currentTab = 1;
-			switchVouch(_currentTab);
-		}
-		function clearAuto() {
-			clearInterval(autoStart);
-		}
-		function setAuto() {
-			autoStart = setInterval("auto();", 3000);
-		}		
-		setAuto();
-		var pull_down = {
-		ids : {},
-		show : function (id,navid){
-			this._clear(id);
-			$("#"+id).show();
-			//$('#'+navid).css('background-color','#EAEAEA');
-		},
-		hide : function (id,navid){
-			this._clear(id);
-			this.ids[id] = setTimeout(function(){
-				$("#"+id).hide();
-				}, 200);
-			//$('#'+navid).css('background-color','#D6D6D6');
-		},
-		  _clear : function(id){
-			  if(this.ids[id] > 0){
-				  clearTimeout(this.ids[id]);
-				  this.ids[id] = 0;
-			  }
-		  },
-		  nav_class : function(obj,navid){
-			  $(obj).addClass('current');
-			  $(obj).siblings().removeClass('current');
-			  //$('#'+navid).css('background-color','#EAEAEA');
-		  }
 		
-		};			
+		//放大图片
+		$(".magnify_btn").click(function(){
+			$(".cover_box").show();	
+			$(".pop_box").html("<img src='"+$(this).prev().attr('src')+"' />");
+		});
+		$(".pop_box").click(function(){
+			$(".cover_box").hide();	
+			$(this).html('');
+		});
 	</script>
     <script>
 		//倒计时		
@@ -201,7 +155,6 @@
 			$('#minute').html("00");
 			$('#second').html("00");
 			$('.price_box img').attr("src","res/images/price2.jpg");
-			//location.replace(document.referrer);
 		}
 		function numToStr(num){
 			var arr=new Array();
