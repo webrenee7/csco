@@ -20,7 +20,7 @@ input{ -webkit-appearance:none; border:medium none; background:none; outline:non
 .last_time{ -webkit-box-flex:1; height:44px; border:1px solid #c3c3c3; margin-top:5px;}
 .time_tit{ width:100px; margin:-12px auto 19px; text-align:center; background-color:#fff; font-size:13px; color:#999;}
 .num_box{ width:171px; height:26px; margin:0 auto; background:url(../images/time_bg.jpg) no-repeat; -webkit-background-size:100% 100%;}
-.num_box span{ display:block; float:left; width:26px; height:26px; border-radius:5px; font-size:17px; color:#c01920; text-align:center;}
+.num_box span{ display:block; float:left; width:26px; height:26px; line-height:26px; border-radius:5px; font-size:17px; color:#c01920; background-color:#f5df64; text-align:center;}
 .num_box .time1{ margin:0 15px 0 6px;}
 .num_box .time2{ margin-right:15px;}
 .num_box .time3{ margin-right:16px;}
